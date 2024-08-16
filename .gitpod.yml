@@ -1,5 +1,6 @@
 image:
   file: .gitpod.Dockerfile
+
 ports:
   - port: 27017 # mongodb
     onOpen: ignore
@@ -32,15 +33,12 @@ tasks:
       exit;
 
   - name: db
-    # starting mongod in background, so it doesn't block prebuilds
     before: >
       mkdir -p /workspace/data &&
       (mongod --dbpath /workspace/data &)
 
   - name: server
     before: export COOKIE_DOMAIN=gitpod.io && export HOME_LOCATION=$(gp url 8000) && export API_LOCATION=$(gp url 3000)
-    # init is not executed for prebuilt workspaces and restarts,
-    # so we should put all the heavy initialization here
     init: >
       cp sample.env .env &&
       pnpm install &&

@@ -1,23 +1,21 @@
 {
   "compilerOptions": {
-    "lib": ["WebWorker", "DOM", "DOM.Iterable"],
-    "target": "es2020",
-    "module": "es2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable", "WebWorker"],
+    "target": "ES2020",
+    "module": "ESNext",
     "moduleResolution": "node",
     "allowJs": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noEmit": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
     "types": ["node", "jest"]
   },
-  // since ts-node compiles ts on the fly and then uses node, it needs to
-  // compile the scripts to commonjs (or node will complain about the requires)
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
